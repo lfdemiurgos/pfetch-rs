@@ -109,7 +109,7 @@ fn pfetch(info: Vec<(Color, String, String)>, logo: Logo, logo_enabled: bool) {
 
     for l in 0..line_amount {
         pfetch_str += &format!(
-            "{padding1}{bold}{logo}{padding2}{color}{info1}{nobold}{separator}{padding3}{color2}{info2}\n",
+            "  {padding1}{bold}{logo}{padding2}{color}{info1}{nobold}{separator}{padding3}{color2}{info2}\n",
             padding1 = " ".repeat(padding1),
             bold = if color_enabled {"\x1b[1m"} else {""},
             logo = if logo_enabled {
@@ -157,8 +157,13 @@ fn pfetch(info: Vec<(Color, String, String)>, logo: Logo, logo_enabled: bool) {
     // disable line wrap
     crossterm::execute!(std::io::stdout(), crossterm::terminal::DisableLineWrap)
         .unwrap_or_default();
-
+    println!(
+        "\n\x1b[1m \x1b[0;30m╭──────────────────────────────────────────────────────────────────╮\n"
+    );
     println!("{pfetch_str}");
+    println!(
+        "\n\x1b[1m \x1b[0;30m╰──────────────────────────────────────────────────────────────────╯\n"
+    );
 
     // enable line wrap
     crossterm::execute!(std::io::stdout(), crossterm::terminal::EnableLineWrap).unwrap_or_default();

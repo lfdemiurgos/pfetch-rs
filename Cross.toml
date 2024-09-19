@@ -1,3 +1,0 @@
-[target.aarch64-linux-android]
-# Workaround https://github.com/cross-rs/cross/issues/1128 / https://github.com/rust-lang/rust/issues/103673
-image = "ghcr.io/cross-rs/aarch64-linux-android:edge"
